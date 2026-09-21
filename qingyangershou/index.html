@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="青羊二手房网 - 成都青羊区优质房源信息查询平台。提供青羊区新房、二手房、租房、商铺及小区房价走势查询，专业的购房指南与交易服务。">
+    <meta name="keywords" content="青羊二手房网,成都青羊区二手房,青羊区房价,青羊区租房,成都二手房">
+    <title>青羊二手房网-成都青羊区优质房源与购房指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --primary-dark: #004c99;
+            --secondary-color: #f5f7fa;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-color: #e1e4e8;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: #f0f2f5;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-outline {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 102, 204, 0.05);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+            padding: 60px 20px;
+            color: var(--white);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        /* Search Bar */
+        .search-box {
+            background: var(--white);
+            padding: 10px;
+            border-radius: 50px;
+            display: flex;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-box select, .search-box input {
+            border: none;
+            padding: 12px 20px;
+            font-size: 15px;
+            outline: none;
+            background: transparent;
+            color: var(--text-main);
+        }
+
+        .search-box select {
+            border-right: 1px solid var(--border-color);
+            border-radius: 50px 0 0 50px;
+            flex: 0 0 120px;
+        }
+
+        .search-box input {
+            flex: 1;
+        }
+
+        .search-box button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0 40px;
+            border-radius: 0 50px 50px 0;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+
+        .search-box button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Stats Banner */
+        .stats-banner {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Section Layout */
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: normal;
+        }
+
+        .section-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        /* Property Card */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-img {
+            height: 200px;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: rgba(0, 102, 204, 0.9);
+            color: var(--white);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-price {
+            font-size: 24px;
+            color: #ff4d4f;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card-price span {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .card-info span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Districts Grid */
+        .districts-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+
+        .district-item {
+            background: var(--white);
+            padding: 20px 10px;
+            text-align: center;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+
+        .district-item:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .district-item strong {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .district-item small {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        /* Guide Section */
+        .guide-section {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 60px;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .guide-card {
+            display: flex;
+            gap: 15px;
+        }
+
+        .guide-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #e6f7ff;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .guide-content h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .guide-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* FAQ */
+        .faq-section {
+            margin-bottom: 60px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            background-color: #fff;
+        }
+
+        .faq-question:hover {
+            background-color: #fafafa;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: none;
+            border-top: 1px solid transparent;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            border-top-color: var(--border-color);
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2b2b2b;
+            color: #ccc;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .districts-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-banner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .header-container {
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .search-box {
+                flex-direction: column;
+                border-radius: 12px;
+                background: transparent;
+                box-shadow: none;
+            }
+            .search-box select, .search-box input {
+                border-radius: 8px;
+                border: 1px solid rgba(255,255,255,0.3);
+                background: rgba(255,255,255,0.95);
+                width: 100%;
+                margin-bottom: 10px;
+                flex: auto;
+            }
+            .search-box button {
+                width: 100%;
+                padding: 12px;
+                border-radius: 8px;
+            }
+            .districts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                青羊二手房网
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#">二手房</a>
+                <a href="#">租房</a>
+                <a href="#">小区房价</a>
+                <a href="#">购房指南</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">免费发布</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>青羊区优质房源，一网打尽</h1>
+            <p>专注成都青羊区二手房交易，真实房源，价格透明，助您找到理想之家。</p>
+            <div class="search-box">
+                <select>
+                    <option value="">全部房源</option>
+                    <option value="sale">出售</option>
+                    <option value="rent">出租</option>
+                </select>
+                <input type="text" placeholder="输入小区名称、商圈或地址">
+                <button>搜索房源</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Statistics -->
+        <section class="stats-banner">
+            <div class="stat-item">
+                <h3>5,280+</h3>
+                <p>在售房源</p>
+            </div>
+            <div class="stat-item">
+                <h3>128</h3>
+                <p>热门小区</p>
+            </div>
+            <div class="stat-item">
+                <h3>3.2万/㎡</h3>
+                <p>青羊区均价</p>
+            </div>
+            <div class="stat-item">
+                <h3>10年+</h3>
+                <p>专业服务</p>
+            </div>
+        </section>
+
+        <!-- Districts -->
+        <section>
+            <div class="section-title">
+                <h2>青羊热门商圈</h2>
+                <a href="#">查看全部 ></a>
+            </div>
+            <div class="districts-grid">
+                <a href="#" class="district-item">
+                    <strong>宽窄巷子</strong>
+                    <small>约4.5万/㎡</small>
+                </a>
+                <a href="#" class="district-item">
+                    <strong>草堂北路</strong>
+                    <small>约3.8万/㎡</small>
+                </a>
+                <a href="#" class="district-item">
+                    <strong>金沙遗址</strong>
+                    <small>约4.2万/㎡</small>
+                </a>
+                <a href="#" class="district-item">
+                    <strong>光华大道</strong>
+                    <small>约3.6万/㎡</small>
+                </a>
+                <a href="#" class="district-item">
+                    <strong>府南新区</strong>
+                    <small>约3.4万/㎡</small>
+                </a>
+                <a href="#" class="district-item">
+                    <strong>苏坡桥</strong>
+                    <small>约3.1万/㎡</small>
+                </a>
+            </div>
+        </section>
+
+        <!-- Latest Listings -->
+        <section>
+            <div class="section-title">
+                <h2>最新房源推荐</h2>
+                <a href="#">查看更多 ></a>
+            </div>
+            <div class="grid-layout">
+                <!-- Card 1 -->
+                <article class="card">
+                    <div class="card-img">
+                        <span class="card-tag">急售</span>
+                        <img src="https://picsum.photos/seed/house1/400/300" alt="成都青羊区房屋">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-price">328万 <span>/ 128㎡</span></div>
+                        <h3 class="card-title"><a href="#">青羊区-光华大道-中海国际社区 3室2厅 南向精装</a></h3>
+                        <div class="card-info">
+                            <span>🏠 3室2厅</span>
+                            <span>📐 128㎡</span>
+                            <span>🚗 2车位</span>
+                            <span>🏢 中楼层</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>发布于 2小时前</span>
+                            <span>经纪人：张先生</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="card">
+                    <div class="card-img">
+                        <span class="card-tag">学区房</span>
+                        <img src="https://picsum.photos/seed/house2/400/300" alt="成都青羊区房屋">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-price">450万 <span>/ 145㎡</span></div>
+                        <h3 class="card-title"><a href="#">青羊区-草堂北路-浣花溪公园旁 4室2厅 大平层</a></h3>
+                        <div class="card-info">
+                            <span>🏠 4室2厅</span>
+                            <span>📐 145㎡</span>
+                            <span>🌳 园林景观</span>
+                            <span>🏢 低楼层</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>发布于 5小时前</span>
+                            <span>经纪人：李女士</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="card">
+                    <div class="card-img">
+                        <img src="https://picsum.photos/seed/house3/400/300" alt="成都青羊区房屋">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-price">210万 <span>/ 89㎡</span></div>
+                        <h3 class="card-title"><a href="#">青羊区-苏坡桥-金沙路 精装两居室 临近地铁</a></h3>
+                        <div class="card-info">
+                            <span>🏠 2室1厅</span>
+                            <span>📐 89㎡</span>
+                            <span>🚇 距地铁300m</span>
+                            <span>🏢 高楼层</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>发布于 1天前</span>
+                            <span>经纪人：王先生</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="card">
+                    <div class="card-img">
+                        <span class="card-tag">高性价比</span>
+                        <img src="https://picsum.photos/seed/house4/400/300" alt="成都青羊区房屋">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-price">280万 <span>/ 110㎡</span></div>
+                        <h3 class="card-title"><a href="#">青羊区-府南新区-万达广场旁 精装修 通透户型</a></h3>
+                        <div class="card-info">
+                            <span>🏠 3室1厅</span>
+                            <span>📐 110㎡</span>
+                            <span>🏬 商业配套</span>
+                            <span>🏢 中楼层</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>发布于 1天前</span>
+                            <span>经纪人：赵女士</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Buying Guide -->
+        <section class="guide-section">
+            <div class="section-title">
+                <h2>青羊区购房指南</h2>
+            </div>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <div class="guide-icon">🛡️</div>
+                    <div class="guide-content">
+                        <h4>交易流程解析</h4>
+                        <p>详细了解青羊区二手房交易的全流程，包括签约、贷款、过户、交房等关键环节的注意事项。</p>
+                    </div>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">💰</div>
+                    <div class="guide-content">
+                        <h4>税费与政策</h4>
+                        <p>解读当前成都二手房交易税费政策，包括契税、个税、增值税等费用的计算标准。</p>
+                    </div>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">🔍</div>
+                    <div class="guide-content">
+                        <h4>如何选房避坑</h4>
+                        <p>提供实用的看房技巧，教您如何辨别房屋质量、核实产权信息以及评估周边配套。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">青羊区二手房交易需要缴纳哪些税费？ <span>+</span></div>
+                <div class="faq-answer">主要包括契税（首套1%/二套1%-2%）、增值税（满2年免征）、个人所得税（1%或差额20%）等。具体金额需根据房屋面积、购买年限及买家资质综合计算。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">在青羊区买房有哪些贷款政策？ <span>+</span></div>
+                <div class="faq-answer">目前首套房首付比例一般为20%-30%，二套房首付比例较高。贷款年限通常最长为30年，且需满足房龄与贷款年限之和不超过一定的限制。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">如何查询青羊区小区的真实房价？ <span>+</span></div>
+                <div class="faq-answer">您可以通过本站的“小区房价”板块，输入具体小区名称，查看该小区的历史成交价、挂牌价走势以及周边房源对比数据。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">房屋交易资金安全如何保障？ <span>+</span></div>
+                <div class="faq-answer">建议通过银行办理资金监管业务，将购房款存入监管账户，待过户完成后由银行释放给卖家，确保资金安全。</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>青羊二手房网</h2>
+                <p>专注成都青羊区房地产信息服务，致力于为用户提供真实、准确、及时的房源信息与专业的购房咨询服务。</p>
+            </div>
+            <div class="footer-col">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">免责声明</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">联系方式</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>服务支持</h3>
+                <ul>
+                    <li><a href="#">发布房源</a></li>
+                    <li><a href="#">经纪人入驻</a></li>
+                    <li><a href="#">买房流程</a></li>
+                    <li><a href="#">社区论坛</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>关注我们</h3>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">新浪微博</a></li>
+                    <li><a href="#">手机APP下载</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 青羊二手房网 版权所有 | ICP备12345678号</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Toggle Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+                
+                // Optional: Close others
+                document.querySelectorAll('.faq-item').forEach(other => {
+                    if (other !== parent) other.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+              </html>
