@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>韩森-专业智能健康管理系统与数据分析平台</title>
+    <meta name="description" content="韩森专注于提供企业级与个人级健康数据管理解决方案。通过智能穿戴设备接入、健康趋势分析、异常预警及个性化运动饮食建议，帮助用户科学管理身体状态，提升生活质量。">
+    <meta name="keywords" content="韩森,健康管理,智能监测,数据分析,健康平台,韩森系统">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --primary-dark: #004c99;
+            --secondary-color: #00c2bb;
+            --text-main: #1a1a1a;
+            --text-secondary: #666666;
+            --bg-light: #f5f7fa;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+            --container-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,102,204,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-item strong {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .feature-item span {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--text-main);
+            color: white;
+            padding: 40px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 36px;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Core Services */
+        .services {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: transparent;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: #e6f0ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Data Visualization Section */
+        .data-section {
+            background: var(--bg-light);
+            padding: 80px 0;
+        }
+
+        .data-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+        }
+
+        .data-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .data-info p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .checklist li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .checklist li::before {
+            content: "✓";
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .chart-placeholder {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            height: 400px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding-bottom: 40px;
+        }
+
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 12%;
+        }
+
+        .bar {
+            width: 100%;
+            background: linear-gradient(to top, var(--primary-color), var(--secondary-color));
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: height 1s ease;
+        }
+
+        .bar::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        /* Use Cases */
+        .cases {
+            padding: 80px 0;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .case-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 250px;
+            group: cursor;
+        }
+
+        .case-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .case-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+        }
+
+        .case-overlay h4 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .case-overlay p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--bg-light);
+            padding: 80px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            display: none;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #aaa;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-grid, .data-layout {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-features {
+                justify-content: center;
+            }
+
+            .hero-content p {
+                margin: 0 auto 40px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-actions {
+                display: none;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .logo {
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#0066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#0066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#0066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>韩森</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#features">功能特点</a></li>
+                    <li><a href="#solutions">解决方案</a></li>
+                    <li><a href="#pricing">服务价格</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">免费试用</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>韩森：您的<b>全链路健康</b>管理专家</h1>
+                    <p>集成智能穿戴数据、医疗级分析引擎与个性化干预方案。从监测到改善，为您构建科学、可视化的健康管理体系。</p>
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <strong>实时监测</strong>
+                            <span>24小时数据追踪</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>智能预警</strong>
+                            <span>异常指标即时提醒</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>个性化建议</strong>
+                            <span>AI驱动行动方案</span>
+                        </div>
+                    </div>
+                    <div class="cta-group">
+                        <a href="#" class="btn btn-primary">立即开始管理</a>
+                        <a href="#" class="btn btn-outline" style="margin-left: 10px;">查看演示</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://picsum.photos/seed/healthtech/600/400" alt="韩森健康管理系统界面展示">
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container stats-grid">
+                <div class="stat-item">
+                    <h3>500W+</h3>
+                    <p>注册用户</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>数据准确率</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1000+</h3>
+                    <p>合作医疗机构</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>专家在线支持</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Features -->
+        <section id="features" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>核心功能模块</h2>
+                    <p>基于大数据与AI技术，提供全方位的健康管理服务</p>
+                </div>
+                <div class="service-grid">
+                    <article class="card">
+                        <div class="card-icon">📊</div>
+                        <h3>多维数据融合</h3>
+                        <p>支持智能手环、血压计、血糖仪等多种设备接入，自动同步并清洗数据，构建您的个人健康数字档案。</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon">🧠</div>
+                        <h3>AI趋势分析</h3>
+                        <p>通过机器学习算法，分析历史数据趋势，识别潜在的健康风险点，提前预警心血管异常或慢性病倾向。</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon">🏃</div>
+                        <h3>定制化干预</h3>
+                        <p>根据您的身体状况与生活习惯，生成科学的运动处方与饮食计划，并利用打卡机制辅助养成健康习惯。</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon">👨‍⚕️</div>
+                        <h3>云端医疗互联</h3>
+                        <p>生成的健康报告可直接分享给家庭医生或专科医生，优化线下就医流程，实现线上线下一体化管理。</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon">🛡️</div>
+                        <h3>隐私安全保护</h3>
+                        <p>采用金融级加密技术，严格遵守HIPAA等数据安全标准，确保您的健康隐私绝对安全。</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon">📱</div>
+                        <h3>多端无缝同步</h3>
+                        <p>支持iOS、Android及Web端数据实时同步，随时随地查看您的健康状态，不错过任何重要信息。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Visualization -->
+        <section class="data-section">
+            <div class="container data-layout">
+                <div class="data-info">
+                    <h3>可视化健康仪表盘</h3>
+                    <p>韩森系统摒弃了复杂的图表，采用直观的仪表盘设计。无论您是关注心率变异性(HRV)还是睡眠质量，都能一目了然。</p>
+                    <ul class="checklist">
+                        <li>支持自定义监测指标组合</li>
+                        <li>周报、月报、年报自动生成</li>
+                        <li>异常数据自动高亮标注</li>
+                        <li>支持导出PDF及Excel格式</li>
+                    </ul>
+                    <br>
+                    <a href="#" class="btn btn-primary">查看数据演示</a>
+                </div>
+                <div class="chart-placeholder">
+                    <div class="bar-group">
+                        <div class="bar" style="height: 40%;" data-value="40%"></div>
+                        <span>周一</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="height: 65%;" data-value="65%"></div>
+                        <span>周二</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="height: 55%;" data-value="55%"></div>
+                        <span>周三</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="height: 80%;" data-value="80%"></div>
+                        <span>周四</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="height: 70%;" data-value="70%"></div>
+                        <span>周五</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="height: 90%;" data-value="90%"></div>
+                        <span>周六</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="height: 85%;" data-value="85%"></div>
+                        <span>周日</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section id="solutions" class="cases">
+            <div class="container">
+                <div class="section-header">
+                    <h2>适用人群与场景</h2>
+                    <p>无论是个人健康管理，还是企业员工福利，韩森都能提供定制化支持</p>
+                </div>
+                <div class="cases-grid">
+                    <div class="case-item">
+                        <img src="https://picsum.photos/seed/runner/600/400" alt="运动爱好者使用场景">
+                        <div class="case-overlay">
+                            <h4>运动爱好者</h4>
+                            <p>精准记录运动消耗，分析乳酸堆积情况，科学安排训练强度。</p>
+                        </div>
+                    </div>
+                    <div class="case-item">
+                        <img src="https://picsum.photos/seed/office/600/400" alt="办公室白领使用场景">
+                        <div class="case-overlay">
+                            <h4>办公室白领</h4>
+                            <p>久坐提醒、颈椎腰椎保护监测，改善亚健康状态，预防职业病。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq">
+            <div class="container faq-container">
+                <div class="section-header">
+                    <h2>常见问题解答</h2>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">韩森系统支持哪些智能设备？</div>
+                        <div class="faq-answer">韩森系统目前支持市面上主流的蓝牙与Wi-Fi连接设备，包括Apple Watch、华为手环、小米手环、欧姆龙血压计以及各类血糖仪。我们会定期更新设备兼容列表。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">我的健康数据会被第三方看到吗？</div>
+                        <div class="faq-answer">绝对不会。韩森采用银行级的数据加密存储技术，您的所有数据仅用于您本人的健康分析。除非您主动授权，否则任何第三方都无法获取您的数据。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">如何开始使用韩森服务？</div>
+                        <div class="faq-answer">您可以点击页面顶部的“免费试用”按钮，注册账号后即可享受基础版一个月的服务。基础版包含所有核心监测功能，无需绑定信用卡。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="margin-bottom: 20px; display:inline-block;">
+                        <span>韩森</span>
+                    </a>
+                    <p style="font-size: 14px; line-height: 1.8;">
+                        韩森致力于通过科技手段降低医疗成本，提高国民健康水平。我们相信，数据是健康的基石。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>产品服务</h4>
+                    <ul>
+                        <li><a href="#">个人版</a></li>
+                        <li><a href="#">家庭版</a></li>
+                        <li><a href="#">企业版</a></li>
+                        <li><a href="#">API接口</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持中心</h4>
+                    <ul>
+                        <li><a href="#">使用帮助</a></li>
+                        <li><a href="#">设备连接指南</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">联系客服</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>电话：400-123-4567</li>
+                        <li>邮箱：support@han-sen.com</li>
+                        <li>地址：科技园区创新大道88号</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 韩森科技有限公司 版权所有 | 仅供演示使用</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Interaction
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
