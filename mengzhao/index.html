@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="萌照分享社区 - 收集最治愈的萌宠与萌娃照片，提供高清图片浏览、分类推荐及每日精选，让您的屏幕充满温暖与快乐。">
+    <meta name="keywords" content="萌照,萌宠,萌娃,治愈系,萌宠图片,萌娃照片">
+    <title>萌照 - 治愈系萌宠与萌娃图片分享社区</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff9a9e;
+            --secondary-color: #fecfef;
+            --accent-color: #ff6b6b;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --bg-light: #fdf6f9;
+            --white: #ffffff;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 24px rgba(255, 107, 107, 0.15);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-gray);
+            font-size: 16px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding: 8px 16px 8px 36px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            background: #f5f5f5;
+            font-size: 14px;
+            outline: none;
+            width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            background: var(--white);
+            border-color: var(--primary-color);
+            width: 240px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            opacity: 0.5;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 60px 0;
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--accent-color);
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Filter Tabs */
+        .filter-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            background: var(--white);
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border-color: var(--accent-color);
+        }
+
+        /* Masonry Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .photo-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-image-wrapper {
+            position: relative;
+            padding-top: 100%; /* Square aspect ratio */
+            overflow: hidden;
+            background-color: #eee;
+        }
+
+        .card-image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-card:hover .card-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background-color: #fff0f0;
+            color: var(--accent-color);
+            font-size: 11px;
+            margin-bottom: 8px;
+        }
+
+        /* Section Title */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -17px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-more {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        .section-more:hover {
+            color: var(--accent-color);
+        }
+
+        /* Layout: Featured (Split) */
+        .featured-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .featured-main {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .featured-main img {
+            width: 100%;
+            height: 400px;
+        }
+
+        .featured-info {
+            padding: 24px;
+        }
+
+        .featured-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .featured-info p {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .user-mini {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #eee;
+        }
+
+        .user-name {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .sidebar-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar-item {
+            display: flex;
+            gap: 15px;
+            background: var(--white);
+            padding: 10px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s;
+        }
+
+        .sidebar-item:hover {
+            transform: translateX(5px);
+        }
+
+        .sidebar-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .sidebar-content h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .sidebar-content span {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        /* Features/Why Us */
+        .features {
+            background-color: var(--white);
+            padding: 60px 0;
+            margin-top: 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature-item {
+            padding: 20px;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .feature-item h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .feature-item p {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2d3436;
+            color: #dfe6e9;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h5 {
+            color: var(--white);
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            color: #b2bec3;
+            margin-bottom: 20px;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #b2bec3;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            color: #636e72;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                height: auto;
+                padding: 15px 0;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .search-box input {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .featured-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>✨</span> 萌照
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">萌宠</a></li>
+                    <li><a href="#">萌娃</a></li>
+                    <li><a href="#">治愈系</a></li>
+                    <li><a href="#">投稿</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <input type="text" placeholder="搜索萌照...">
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>发现生活中的治愈瞬间</h1>
+            <p>汇聚全球最可爱的萌宠与萌娃照片，为您带来每日份的温暖与快乐。在这里，每一张照片都能治愈您的心情。</p>
+            <a href="#" class="hero-btn">浏览热门萌照</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Filter Tabs -->
+        <div class="filter-section">
+            <button class="filter-btn active">全部推荐</button>
+            <button class="filter-btn">萌宠专区</button>
+            <button class="filter-btn">萌娃日常</button>
+            <button class="filter-btn">猫咪</button>
+            <button class="filter-btn">狗狗</button>
+            <button class="filter-btn">治愈风景</button>
+        </div>
+
+        <!-- Featured Section -->
+        <section class="featured-layout">
+            <div class="featured-main">
+                <img src="https://picsum.photos/seed/doghero/800/400" alt="治愈系萌宠">
+                <div class="featured-info">
+                    <span class="tag">今日精选</span>
+                    <h3>午后阳光下的金毛寻回犬，眼神清澈如水</h3>
+                    <p>这只金毛在午后的阳光下打了个盹，阳光洒在它金色的毛发上，仿佛给它镀上了一层圣光。这样的治愈画面，真的让人心都化了。</p>
+                    <div class="user-mini">
+                        <img src="https://picsum.photos/seed/user1/50/50" class="avatar" alt="用户头像">
+                        <span class="user-name">摄影师小王 · 发布于 2小时前</span>
+                    </div>
+                </div>
+            </div>
+            
+            <aside class="sidebar-list">
+                <div class="sidebar-item">
+                    <img src="https://picsum.photos/seed/cat1/100/100" class="sidebar-thumb" alt="萌宠">
+                    <div class="sidebar-content">
+                        <h4>这只橘猫居然能装进杯子里！</h4>
+                        <span>萌宠 · 3.2k 赞</span>
+                    </div>
+                </div>
+                <div class="sidebar-item">
+                    <img src="https://picsum.photos/seed/baby1/100/100" class="sidebar-thumb" alt="萌娃">
+                    <div class="sidebar-content">
+                        <h4>宝宝第一次看到镜子的反应</h4>
+                        <span>萌娃 · 1.5k 赞</span>
+                    </div>
+                </div>
+                <div class="sidebar-item">
+                    <img src="https://picsum.photos/seed/pet2/100/100" class="sidebar-thumb" alt="萌宠">
+                    <div class="sidebar-content">
+                        <h4>深夜食堂：仓鼠的囤粮大作战</h4>
+                        <span>萌宠 · 890 赞</span>
+                    </div>
+                </div>
+                <div class="sidebar-item">
+                    <img src="https://picsum.photos/seed/animal3/100/100" class="sidebar-thumb" alt="萌宠">
+                    <div class="sidebar-content">
+                        <h4>柯基的“小短腿”奔跑瞬间</h4>
+                        <span>萌宠 · 2.1k 赞</span>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Gallery Grid -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">最新萌照</h2>
+                <a href="#" class="section-more">查看更多 →</a>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Card 1 -->
+                <article class="photo-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://picsum.photos/seed/cat2/400/400" alt="猫咪睡觉">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">猫咪</span>
+                        <h3 class="card-title">猫咪睡觉时的呼噜声</h3>
+                        <div class="card-meta">
+                            <span>萌宠控</span>
+                            <span>2小时前</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="photo-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://picsum.photos/seed/dog2/400/500" alt="狗狗互动">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">狗狗</span>
+                        <h3 class="card-title">互动游戏时间</h3>
+                        <div class="card-meta">
+                            <span>阿汪爱宠</span>
+                            <span>5小时前</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="photo-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://picsum.photos/seed/baby2/400/400" alt="萌娃笑脸">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">萌娃</span>
+                        <h3 class="card-title">灿烂的笑脸</h3>
+                        <div class="card-meta">
+                            <span>宝妈日记</span>
+                            <span>1天前</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="photo-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://picsum.photos/seed/animal4/400/300" alt="小动物">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">治愈系</span>
+                        <h3 class="card-title">森林里的小精灵</h3>
+                        <div class="card-meta">
+                            <span>自然观察</span>
+                            <span>3小时前</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="photo-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://picsum.photos/seed/cat3/400/450" alt="猫咪背影">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">猫咪</span>
+                        <h3 class="card-title">高冷的背影</h3>
+                        <div class="card-meta">
+                            <span>喵星人</span>
+                            <span>6小时前</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="photo-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://picsum.photos/seed/dog3/400/400" alt="狗狗合影">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">狗狗</span>
+                        <h3 class="card-title">狗狗们的友谊</h3>
+                        <div class="card-meta">
+                            <span>狗友圈</span>
+                            <span>8小时前</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Why Us / Features -->
+        <section class="features">
+            <div class="section-header" style="margin-bottom: 30px;">
+                <h2 class="section-title">为什么选择萌照社区？</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">📷</div>
+                    <h4>高清原图</h4>
+                    <p>所有上传图片均为高清原图，细节清晰可见，还原真实美好。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">❤️</div>
+                    <h4>纯净社区</h4>
+                    <p>无广告、无骚扰，专注于分享纯粹的美好，让浏览更安心。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌍</div>
+                    <h4>全球同好</h4>
+                    <p>汇聚来自世界各地的萌宠与萌娃爱好者，分享跨文化的治愈瞬间。</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="color:white; margin-bottom: 15px; display:inline-block;">
+                        <span>✨</span> 萌照
+                    </a>
+                    <p>致力于打造最温暖、最纯粹的萌宠与萌娃图片分享平台。在这里，每一张照片都值得被珍藏。</p>
+                </div>
+                <div class="footer-col">
+                    <h5>探索</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">萌宠专区</a></li>
+                        <li><a href="#">萌娃日常</a></li>
+                        <li><a href="#">治愈风景</a></li>
+                        <li><a href="#">投稿指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>关于我们</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">平台介绍</a></li>
+                        <li><a href="#">用户协议</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">联系合作</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>关注我们</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">新浪微博</a></li>
+                        <li><a href="#">小红书</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 萌照社区 版权所有 | 仅供演示使用</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+                          </html>
