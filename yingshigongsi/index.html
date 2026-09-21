@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="星河视界影视制作公司官方网站。提供电影、电视剧、广告片、宣传片及微视频的专业策划、拍摄与后期制作服务。查看最新作品案例、幕后花絮及行业资讯。">
+    <meta name="keywords" content="影视公司, 星河视界, 影视制作, 电影制作, 广告拍摄, 视频制作, 影视公司官网">
+    <title>影视公司-星河视界专业影视制作与策划服务</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #f59e0b;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border-color: #e2e8f0;
+            --container-width: 1200px;
+            --header-height: 80px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Header & Nav */
+        header {
+            height: var(--header-height);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://picsum.photos/seed/cinema/1920/1080') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-top: var(--header-height);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: #e2e8f0;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--bg-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-top-color: var(--accent-color);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            color: var(--accent-color);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background-color: var(--bg-white);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            group: cursor-pointer;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 40px 20px 20px;
+            color: white;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portfolio-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .portfolio-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--bg-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.25rem;
+            color: var(--primary-color);
+            margin-bottom: 24px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item h4 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            font-weight: 800;
+        }
+
+        .stat-item span {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .about-image img {
+            border-radius: 8px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Process Section */
+        .process {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .process .section-header h2 {
+            color: white;
+        }
+
+        .process .section-header p {
+            color: #94a3b8;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(255,255,255,0.2);
+            z-index: 0;
+            display: none;
+        }
+
+        @media(min-width: 768px) {
+            .process-steps::before { display: block; }
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255,255,255,0.1);
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-color), #d97706);
+            padding: 80px 0;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #020617;
+            color: #94a3b8;
+            padding: 60px 0 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-brand p {
+            margin-bottom: 20px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .process-steps::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <span>★</span> 星河视界
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#services">服务项目</a></li>
+                    <li><a href="#portfolio">精选案例</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#process">制作流程</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="cta-button">获取报价</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>用光影讲述品牌故事<br>打造视觉传播新高度</h1>
+                <p>我们是一家专业的影视制作公司，致力于为企业提供从策划、拍摄到后期制作的全方位影视解决方案，助力您的品牌影响力倍增。</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">查看作品案例</a>
+                    <a href="#contact" class="btn btn-outline">联系我们咨询</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding services">
+        <div class="container">
+            <div class="section-header">
+                <h2>专业影视制作服务</h2>
+                <p>无论是企业宣传片、影视广告还是微电影，我们都能提供专业、高效的制作服务，满足不同场景的视觉需求。</p>
+            </div>
+            <div class="services-grid">
+                <article class="service-card">
+                    <div class="service-icon">🎥</div>
+                    <h3>企业形象宣传片</h3>
+                    <p>深度挖掘企业文化与核心竞争力，通过专业的视听语言，塑造高端、立体的品牌形象。</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">📺</div>
+                    <h3>影视广告拍摄</h3>
+                    <p>创意驱动，精准投放。针对产品特性定制广告脚本，通过高质量拍摄提升转化率。</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3>短视频与微电影</h3>
+                    <p>适应新媒体传播趋势，制作高互动性的短视频及剧情类微电影，增强用户粘性。</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">📡</div>
+                    <h3>直播与活动跟拍</h3>
+                    <p>提供专业的活动现场直播技术支持及全程跟拍服务，实时记录精彩瞬间。</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section-padding portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>精选制作案例</h2>
+                <p>多年来我们服务了众多知名企业，以下展示部分代表性项目成果。</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://picsum.photos/seed/tech/600/400" alt="科技产品宣传片">
+                    <div class="portfolio-overlay">
+                        <h3>未来科技年度峰会</h3>
+                        <p>企业宣传片 | 4K高清拍摄</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://picsum.photos/seed/fashion/600/400" alt="时尚品牌广告">
+                    <div class="portfolio-overlay">
+                        <h3>都市时尚品牌TVC</h3>
+                        <p>影视广告 | 国际范调色</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://picsum.photos/seed/food/600/400" alt="美食纪录片">
+                    <div class="portfolio-overlay">
+                        <h3>寻味中国系列纪录片</h3>
+                        <p>微电影 | 沉浸式体验</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://picsum.photos/seed/arch/600/400" alt="建筑漫游">
+                    <div class="portfolio-overlay">
+                        <h3>地标建筑3D漫游</h3>
+                        <p>建筑可视化 | 视效大片</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://picsum.photos/seed/car/600/400" alt="汽车广告">
+                    <div class="portfolio-overlay">
+                        <h3>豪华汽车品牌广告</h3>
+                        <p>商业广告 | 赛博朋克风格</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://picsum.photos/seed/sport/600/400" alt="体育赛事">
+                    <div class="portfolio-overlay">
+                        <h3>城市马拉松赛事</h3>
+                        <p>赛事直播与纪录片</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://picsum.photos/seed/studio/600/500" alt="影视制作团队工作场景">
+                </div>
+                <div class="about-text">
+                    <h2>关于星河视界</h2>
+                    <p>星河视界成立于2015年，是一家集创意策划、拍摄制作、后期合成为一体的综合性影视制作公司。我们拥有一支经验丰富、充满激情的专业团队，包括导演、摄影师、剪辑师、美术指导及资深后期特效师。</p>
+                    <p>我们相信，优秀的影视作品不仅是技术的堆砌，更是创意与情感的共鸣。我们坚持以客户为中心，以品质为核心，致力于通过镜头语言为客户创造最大价值。</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h4>500+</h4>
+                            <span>完成项目</span>
+                        </div>
+                        <div class="stat-item">
+                            <h4>98%</h4>
+                            <span>客户好评率</span>
+                        </div>
+                        <div class="stat-item">
+                            <h4>5年+</h4>
+                            <span>行业经验</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="section-padding process">
+        <div class="container">
+            <div class="section-header">
+                <h2>标准化制作流程</h2>
+                <p>严谨的流程管理确保每一个项目都能按时、高质量交付。</p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>前期策划</h3>
+                    <p>创意构思、脚本撰写、分镜绘制、拍摄勘景</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>中期拍摄</h3>
+                    <p>专业设备租赁、现场导演调度、高清素材采集</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>后期制作</h3>
+                    <p>粗剪精剪、调色、特效合成、声音设计</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>交付验收</h3>
+                    <p>成片审阅、修改调整、最终交付与版权移交</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>准备好开始您的项目了吗？</h2>
+            <p>无论您有怎样的创意想法，星河视界都将是您最值得信赖的合作伙伴。</p>
+            <a href="mailto:contact@starhorizon.com" class="btn btn-outline" style="border-color: var(--primary-color); color: var(--primary-color);">立即联系我们</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><span>★</span> 星河视界</h3>
+                    <p>专注于为品牌提供高品质的影视内容制作服务，用镜头捕捉精彩，用创意点亮未来。</p>
+                    <p>地址：中国上海市浦东新区传媒大道88号创意园区A座</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#home">网站首页</a></li>
+                        <li><a href="#services">服务项目</a></li>
+                        <li><a href="#portfolio">成功案例</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>服务项目</h4>
+                    <ul>
+                        <li><a href="#">企业宣传片</a></li>
+                        <li><a href="#">影视广告</a></li>
+                        <li><a href="#">短视频制作</a></li>
+                        <li><a href="#">直播技术</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>电话：021-1234-5678</li>
+                        <li>邮箱：contact@starhorizon.com</li>
+                        <li>微信：StarHorizonMedia</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 星河视界影视制作有限公司 版权所有 | ICP备12345678号</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+            } else {
+                header.style.boxShadow = "none";
+            }
+        });
+    </script>
+</body>
+  </html>
